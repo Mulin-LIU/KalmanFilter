@@ -1,0 +1,6 @@
+gcc test_basics.cpp  \
+-I ../test_dependencies/googletest/include  \
+-I ../../include \
+-L ../test_dependencies/googletest/lib \
+-lstdc++ -std=c++17 \
+-lgtest -lgtest_main -lpthread

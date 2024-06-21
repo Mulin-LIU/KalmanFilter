@@ -1,0 +1,47 @@
+template <typename T>
+class KalmanFilter
+{
+private:
+    /// @brief Supplementary functions
+    class SupplementFunctions
+    {
+    ^^Istatic std::vector<T> vector_minus(const std::vector<T> &vector1, const std::vector<T> &vector2);
+^^I^^I
+^^I^^Istatic std::vector<T> vector_plus(const std::vector<T> &vector1, const std::vector<T> &vector2);
+^^I^^I
+^^I^^Istatic std::vector<T> matrix_multiply_vector(const std::vector<std::vector<T>> &matrix, const std::vector<T> &vector);
+^^I^^I
+^^I^^Istatic std::vector<std::vector<T>> matrix_multiply_matrix(const std::vector<std::vector<T>> &matrix1, const std::vector<std::vector<T>> &matrix2);
+^^I^^I
+^^I^^Istatic std::vector<std::vector<T>> matrix_transpose(const std::vector<std::vector<T>> &matrix);
+^^I^^I
+^^I^^Istatic std::vector<std::vector<T>> matrix_plus_matrix(const std::vector<std::vector<T>> &matrix1, const std::vector<std::vector<T>> &matrix2);
+^^I^^I
+^^I^^Istatic std::vector<std::vector<T>> matrix_inverse(const std::vector<std::vector<T>> &matrix, unsigned int order);
+    };
+
+    /// @brief Estimated state
+    std::vector<T> mEstimateState;
+
+    /// @brief Covariance of the estimated state
+    std::vector<std::vector<T>> mEstimateStateCovariance;
+
+    /// @brief Pridicted state
+    std::vector<T> mPredictState;
+
+    /// @brief Covariance of the predicted state
+    std::vector<std::vector<T>> mPredictStateCovariance;
+
+    /// @brief If the next state is predicted
+    bool mNextStatePredicted;
+
+public:
+    /// @brief The constructor without argument is deleted
+    KalmanFilter() = delete;
+
+    /// @brief The constructor that initiates the Kalman filter
+    /// @param initialState The initial state vector
+    /// @param initialStateCovariance The initial state covariance
+    KalmanFilter(const std::vector<T> &initialState,
+                 const std::vector<std::vector<T>> &initialStateCovariance);
+};
